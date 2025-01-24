@@ -4,25 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/nes.css/2.3.0/css/nes.min.css" rel="stylesheet"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/nes.css/2.3.0/css/nes-core.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/index.css">
-    <link rel="stylesheet" href="static/js/script.js">
 
     <title>hitButton</title>
 </head>
 <body>
     <div class="container">
-        <h1 class="title">Gioco della talpa!</h1>
-        <div class="text1">Bla bla bla</div>
-
-        <div class="parent">
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
+        <div class="leftSection">
+            <div class="image-left"></div>
+        </div>
+        <div class="centerSection">
+            <h1 class="title"></h1>
+            <div class="text1">Cattura il Pokemon!</div>
+    
+            <div class="parent">
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+            </div>
+    
+            <input id="button" type="button" name="guess" class="buttonTheme" value="INIZIA">
+    
+            <div class="tempo">Tempo Gioco</div>
+        </div>
+        <div class="rightSection">
+            <div class="scoreDisplay">
+                <h2>Catches</h2>
+                <p id="score">0</p>
+            </div>
         </div>
     </div>
+
+    <script>
+        let elements = document.querySelectorAll(".hole");
+        let talpa = -1; 
+        let button = document.querySelector("#button");
+        let score = 0; 
+        let gameRunning = false; 
+        let point = document.querySelector("#score");
+        let timeGame = document.querySelector(".tempo");
+        let tip = document.querySelector(".text1")
     
+        function MagicNumber(min, max) {
+            let n = 0
+            n = Math.random()
+            n = n * (max - min)
+            n = parseInt(n) + min
+            console.log(n)
+            return n
+        }
+
+        //Struttura del gioco
+       
+        button.addEventListener("click", function () {
+            if (!gameRunning){
+                gameRunning = true;
+                score = 0;
+                tip.innerHTML = "Catturalo!";
+                startGame();
+            }else{
+                return;
+            }
+            
+        });
+    
+        function startGame() {
+            let gameTime = 30; 
+            let talpaSpawn = MagicNumber(1,5);
+            let displayTime = gameTime
+
+            // setInterval per ripetere in continuazione l'azione x far apparire la talpa e successivamente clear-- per mettere fine alla ripetizione
+            let gameInterval = setInterval(function () {
+                displayTime -= 1;
+                timeGame.innerHTML = "Mancano " + displayTime + "s"
+                showTalpa(); 
+            }, 1000);
+
+            setTimeout(function () {
+                clearInterval(gameInterval); 
+                gameRunning = false;
+                point.innerHTML = "Gioco finito! Punteggio: " + score;
+                hideTalpa();
+            }, gameTime * 1000);
+        }
+
+            function showTalpa() {
+                hideTalpa();
+                talpa = MagicNumber(0, elements.length - 1);
+                elements[talpa].classList.add("active");
+
+                setTimeout(function () {
+                    hideTalpa();
+                }, talpaSpawn * 1000);
+        }
+
+        function hideTalpa() {
+            if (talpa >= 0){
+                elements[talpa].classList.remove("active")
+            }
+            talpa = -1;
+        }
+
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].addEventListener("click", function (event) {
+                let el = event.currentTarget;
+
+                if (gameRunning && i === talpa) { 
+                    score += 1;
+                    point.innerHTML = "Punteggio:  " + score;
+                    hideTalpa(); 
+                }else if(gameRunning){
+                    score -= 1;
+                    point.innerHTML = "Punteggio:  " + score;
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>
