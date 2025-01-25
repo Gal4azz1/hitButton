@@ -30,13 +30,10 @@ body {
     border-radius: 10px;
 }
 
-.image-left {
+.image-left img {
     width: 100%;
     height: 800px;
-    background-image: url("/static/images/Allenatoree.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    object-fit: contain;
 }
 
 .centerSection {
@@ -46,29 +43,40 @@ body {
 }
 
 .parent {
-    display: flex;
-    width: 360px;
-    flex-wrap: wrap;
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 10px; 
     margin-top: 30px;
+    margin-left: 50px;
 }
 
 .hole {
-    margin: 10px;
-    background-image: url("/static/images/PokeballImgg.png");
-    width: 100px;
+    position: relative; 
+    width: 100px; 
     height: 100px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+    
 }
 
-.title {
-    background-image: url("/static/images/LogoPokemon.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.hole img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    position: absolute; 
+}
+
+.hole.active {
+    background-image: url("/static/images/Gengar.png");
+}
+
+.title img {
     width: 600px;
     height: 200px;
+    object-fit: contain;
 }
 
 .text1 {
@@ -86,10 +94,6 @@ body {
     margin-top: 20px;
     background-color: rgb(202, 202, 5);
     border-color: rgb(19, 19, 165);
-}
-
-.hole.active {
-    background-image: url("/static/images/Gengar.png");
 }
 
 .rightSection {
@@ -113,5 +117,4 @@ body {
 .tempo {
     margin-top: 10px;
     font-size: 30px;
-    
 }

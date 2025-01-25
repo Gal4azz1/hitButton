@@ -13,28 +13,32 @@
 <body>
     <div class="container">
         <div class="leftSection">
-            <div class="image-left"></div>
+            <div class="image-left">
+                <img src="/static/images/Allenatoree.png" alt="Allenatore">
+            </div>
         </div>
         <div class="centerSection">
-            <h1 class="title"></h1>
+            <div class="title">
+                <img src="/static/images/LogoPokemon.png" alt="Logo Pokemon">
+            </div>
             <div class="text1">Cattura il Pokemon!</div>
     
             <div class="parent">
-                <div class="hole"></div>
-                <div class="hole"></div>
-                <div class="hole"></div>
-                <div class="hole"></div>
-                <div class="hole"></div>
-                <div class="hole"></div>
+                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
             </div>
     
             <input id="button" type="button" name="guess" class="buttonTheme" value="INIZIA">
     
-            <div class="tempo">Tempo Gioco</div>
+            <div class="tempo"></div>
         </div>
         <div class="rightSection">
             <div class="scoreDisplay">
-                <h2>Catches</h2>
+                <h2>Catture</h2>
                 <p id="score">0</p>
             </div>
         </div>
@@ -89,6 +93,9 @@
                 clearInterval(gameInterval); 
                 gameRunning = false;
                 point.innerHTML = "Gioco finito! Punteggio: " + score;
+                tip.innerHTML = "Punteggio basso? Riprovaci!"
+                timeGame.innerHTML = "Tempo scaduto!"
+
                 hideTalpa();
             }, gameTime * 1000);
         }
@@ -96,7 +103,14 @@
             function showTalpa() {
                 hideTalpa();
                 talpa = MagicNumber(0, elements.length - 1);
+                let selectedHole = elements[talpa];
+                selectedHole.classList.add("active");
+
+                let img = selectedHole.querySelector("img");
+                img.src = "/static/images/Gengar.png";
+
                 elements[talpa].classList.add("active");
+
 
                 setTimeout(function () {
                     hideTalpa();
@@ -106,6 +120,8 @@
         function hideTalpa() {
             if (talpa >= 0){
                 elements[talpa].classList.remove("active")
+                let img = elements[talpa].querySelector("img");
+                img.src = "/static/images/PokeballImgg.png";
             }
             talpa = -1;
         }
