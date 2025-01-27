@@ -14,22 +14,22 @@
     <div class="container">
         <div class="leftSection">
             <div class="image-left">
-                <img src="/static/images/Allenatoree.png" alt="Allenatore">
+                <img src="static/images/Allenatoree.png" alt="Allenatore">
             </div>
         </div>
         <div class="centerSection">
             <div class="title">
-                <img src="/static/images/LogoPokemon.png" alt="Logo Pokemon">
+                <img src="static/images/LogoPokemon.png" alt="Logo Pokemon">
             </div>
             <div class="text1">Cattura il Pokemon!</div>
     
             <div class="parent">
-                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
-                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
-                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
-                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
-                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
-                <div class="hole" ><img src="/static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="static/images/PokeballImgg.png" alt="Pokeball"></div>
+                <div class="hole" ><img src="static/images/PokeballImgg.png" alt="Pokeball"></div>
             </div>
     
             <input id="button" type="button" name="guess" class="buttonTheme" value="INIZIA">
@@ -107,7 +107,7 @@
                 selectedHole.classList.add("active");
 
                 let img = selectedHole.querySelector("img");
-                img.src = "/static/images/Gengar.png";
+                img.src = "static/images/Gengar.png";
 
                 elements[talpa].classList.add("active");
 
@@ -121,7 +121,7 @@
             if (talpa >= 0){
                 elements[talpa].classList.remove("active")
                 let img = elements[talpa].querySelector("img");
-                img.src = "/static/images/PokeballImgg.png";
+                img.src = "static/images/PokeballImgg.png";
             }
             talpa = -1;
         }
