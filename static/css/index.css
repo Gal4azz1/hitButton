@@ -69,10 +69,6 @@ body {
     position: absolute; 
 }
 
-.hole.active {
-    background-image: url("/static/images/Gengar.png");
-}
-
 .title img {
     width: 600px;
     height: 200px;

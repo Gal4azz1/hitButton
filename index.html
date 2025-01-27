@@ -109,9 +109,6 @@
                 let img = selectedHole.querySelector("img");
                 img.src = "static/images/Gengar.png";
 
-                elements[talpa].classList.add("active");
-
-
                 setTimeout(function () {
                     hideTalpa();
                 }, talpaSpawn * 1000);
@@ -119,7 +116,6 @@
 
         function hideTalpa() {
             if (talpa >= 0){
-                elements[talpa].classList.remove("active")
                 let img = elements[talpa].querySelector("img");
                 img.src = "static/images/PokeballImgg.png";
             }
